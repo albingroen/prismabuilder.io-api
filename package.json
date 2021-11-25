@@ -1,0 +1,26 @@
+{
+  "name": "prismabuilder.io-api",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "author": "Albin Groen <albin.groen@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "dev": "tsc -w",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.2",
+    "@types/cors": "^2.8.12",
+    "@types/express": "^4.17.13",
+    "@types/node": "^16.11.10",
+    "nodemon": "^2.0.15",
+    "typescript": "^4.5.2"
+  },
+  "dependencies": {
+    "@prisma/sdk": "^3.5.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  }
+}
