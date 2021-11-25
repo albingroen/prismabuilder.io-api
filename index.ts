@@ -2,7 +2,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
-import { format } from "@prisma/sdk";
+import { formatSchema } from "@prisma/sdk";
 import { jsonToPrismaSchema } from "./prisma";
 
 dotenv.config();
@@ -15,8 +15,10 @@ app.use(bodyParser.json());
 
 const port = process.env.port ?? 1337;
 
-app.post("/format", (req, res) => {
-  const formattedSchema = format(jsonToPrismaSchema(req.body.schema));
+app.post("/format", async (req, res) => {
+  const formattedSchema = await formatSchema({
+    schema: jsonToPrismaSchema(req.body.schema),
+  });
   res.send(formattedSchema);
 });
 
