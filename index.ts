@@ -26,7 +26,7 @@ app.post("/generate", async (req, res) => {
 });
 
 app.post("/parse", async (req, res) => {
-  const path = `tmp/${uuid()}.prisma`;
+  const path = `./tmp/${uuid()}.prisma`;
   const formattedSchema = await formatSchema({ schema: req.body.schema });
   fs.writeFileSync(path, formattedSchema, "utf8");
   const schemaObject = new ConvertSchemaToObject(path).run();
