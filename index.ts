@@ -15,6 +15,13 @@ app.use(bodyParser.json());
 
 const port = process.env.port ?? 1337;
 
+app.post("/generate", async (req, res) => {
+  const formattedSchema = await formatSchema({
+    schema: jsonToPrismaSchema(req.body.schema),
+  });
+  res.send(formattedSchema);
+});
+
 app.post("/format", async (req, res) => {
   const formattedSchema = await formatSchema({
     schema: jsonToPrismaSchema(req.body.schema),
