@@ -1,3 +1,3 @@
 # prismabuilder.io-api
 
-A single endpoint for generating and formatting the Prisma schema from JSON
+2 endpoints for generating, formatting and parsing the Prisma schema from JSON and back.
