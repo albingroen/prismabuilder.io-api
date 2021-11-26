@@ -22,13 +22,6 @@ app.post("/generate", async (req, res) => {
   res.send(formattedSchema);
 });
 
-app.post("/format", async (req, res) => {
-  const formattedSchema = await formatSchema({
-    schema: jsonToPrismaSchema(req.body.schema),
-  });
-  res.send(formattedSchema);
-});
-
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
 });
