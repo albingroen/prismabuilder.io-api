@@ -29,6 +29,7 @@ const parseModelFields = (fields: any[]) => {
       list,
       required,
       isId,
+      isUpdatedAt,
       relation,
       default: defaultValue,
       unique: isUnique,
@@ -36,11 +37,12 @@ const parseModelFields = (fields: any[]) => {
       const array = list ? "[]" : "";
       const optional = list ? "" : required ? "" : "?";
       const id = isId ? " @id" : "";
+      const updatedAt = isUpdatedAt ? " @updatedAt" : "";
       const unique = isUnique ? " @unique" : "";
       const default_value = defaultValue ? ` @default(${defaultValue})` : "";
       const relationship = parseRelationship(relation);
 
-      return `    ${name} ${type}${array}${optional}${id}${unique}${relationship}${default_value}`;
+      return `    ${name} ${type}${array}${optional}${id}${unique}${relationship}${default_value}${updatedAt}`;
     }
   );
 };
