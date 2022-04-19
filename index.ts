@@ -21,7 +21,7 @@ app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const port = process.env.port ?? 1337;
+const port = process.env.port || 1337;
 
 app.post("/generate", async (req, res) => {
   const formattedSchema = await formatSchema({
@@ -39,7 +39,7 @@ app.post("/parse", async (req, res) => {
   fs.rmSync(path);
 });
 
-app.get("/releases/:target/:version", async (req, res) => {
+app.get("/releases/:target/:version", async (_, res) => {
   const release = await octokit.request(
     "GET /repos/{owner}/{repo}/releases/latest",
     {
@@ -57,7 +57,7 @@ app.get("/releases/:target/:version", async (req, res) => {
   );
 
   const [{ browser_download_url: tar_url }, { browser_download_url: sig_url }] =
-    assets.data[0];
+    assets.data;
 
   res.json({
     version: release.data.tag_name,
